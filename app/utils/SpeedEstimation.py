@@ -87,7 +87,7 @@ class SpeedEstimation(object):
                 self.update_detections_speed(ID, detection_speed, current_center_point, smoothed_detection_ppm, updated_at)
 
                 # Assign value to detection dictionary entry, smooth and format as needed.
-                detection['speed'] = round(float(np.median(self.detection_speeds[ID]['speeds'])), 2)
+                detection['speed'] = round(float(np.median(self.detection_speeds[ID]['speeds']) * 10), 2)
 
         # Check dictionary has no outdated entries to mitigate overheads.
         self.prune_outdated_objects(updated_at)
@@ -171,7 +171,7 @@ class SpeedEstimation(object):
             return None 
         
         # Average out pixel per meter values.
-        avg_ppm = prev_ppm + current_ppm / 2
+        avg_ppm = (prev_ppm + current_ppm) / 2
 
         # Return calucalted speed, converted into a familial format. 
         return self.calculate_speed(pixel_distance, avg_ppm, elapsed_time)

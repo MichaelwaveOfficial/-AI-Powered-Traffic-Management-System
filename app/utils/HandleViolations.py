@@ -49,16 +49,16 @@ class HandleViolations(object):
             detection['offender'] = True
             
             # Timestamp capture is being processed at. 
-            captured_at = time.time()
+            captured_at = datetime.datetime.now().strftime('%a-%b-%Y_%I-%M-%S%p')
 
             # Obtain processed frame with required data.
             captured_frame = self.capture_offense(frame=frame, detection=detection, captured_at=captured_at)
             
             # Save frame capture.
-            self.save_capture_to_device(frame=captured_frame)
+            self.save_capture_to_device(captured_frame=captured_frame, save_path=CAPTURES_DIR_PATH)
 
     
-    def save_capture_to_device(self, captured_frame : np.ndarray, save_path : str = CAPTURES_DIR_PATH) -> None:
+    def save_capture_to_device(self, captured_frame : np.ndarray, save_path : str) -> None:
 
         '''
             Method capturing the datetime stamp of the incident, saves it to devices local storage.
@@ -75,11 +75,19 @@ class HandleViolations(object):
 
         # Concatenate save_path and timestamp with .jpeg suffix.
         filename = os.path.join(save_path, f'{captured_at}.jpg')
+
+        if not os.path.exists(save_path):
+            os.makedirs(save_path, exist_ok=True)
        
         try:
             # Attempt to write to device.
-            cv2.imwrite(filename, captured_frame)
-            print('Capture Saved : ', filename)
+            success = cv2.imwrite(filename, captured_frame)
+
+            if success:
+                print('Capture Saved : ', filename)
+            else:
+                print('Failed to save capture.')
+
         except Exception as e:
             print(f'Error occurded writing out capture to application directory! \n{e}')
 

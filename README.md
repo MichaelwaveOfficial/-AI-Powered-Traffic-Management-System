@@ -3,24 +3,22 @@
 
 ## Overview
 
-Embracing the future of AI, automating processes that directly impact our daily lives -- like traffic management. This system is to demonstrate how a
-simple implementation can be used to enhance road safety and efficiency whilst providing AI driven insights. 
+Embracing the future of AI, this implementation can be used to automate the workflow of traffic management. Enhancing road safety and efficiency whilst providing AI driven insights. 
 
-By leveraging deep learning techniques to manage traffic in real time through the integration of an object detection model from Ultralytics. The detection pertaining to vehicles of interest, the tracking of their movement and estimation of their speeds has never been easier. With this implementation, roads can be made safer by handling negligent road users accordingly.
-
-Current solutions pertaining towards traffic management in the UK could be considered draconian. Recent advancements mean that adoption of models 
-for real time processing have made this task a lot more attainable. 
+Since current solutions for traffic management in the UK are either inactive or outdated, this example serves to prove the attainability for real time processing without the need for manual interaction.
 
 # 📖 Table of Contents
 
--[Flowcharts](#Flowcharts)
--[Benefits](#Benefits)
--[UseCases](#UseCases)
--[Features](#Features)
--[Prerequisites](#Prerequisites)
--[Setup](#Setup)
--[Configuration](#Configuration)
--[RunningTheProject](#Run)
+---
+1.[Flowcharts](#Flowcharts)
+2.[Benefits](#Benefits)
+3.[UseCases](#UseCases)
+4.[Features](#Features)
+5.[Prerequisites](#Prerequisites)
+6.[Setup](#Setup)
+7.[Configuration](#Configuration)
+8.[RunningTheProject](#Run)
+---
 
 ## Flowcharts
 
@@ -77,9 +75,10 @@ Use Cases:
     ✔️ License Plate Detection (ANPR)
         - Crop and preprocess license plates.
         - Fed to OCR model. 
-        - Processed with proprietary logic and appended to vehicle data.
+        - Processed with proprietary logic and appended to vehicle data
+        to capture offending vehicle.
 
-![object speed estimation](./docs/plate_reading.jpg.jpg)
+![object speed estimation](./docs/speeding_capture.jpg)
 
 -------------------------------------------------------------------------------
 
@@ -102,6 +101,8 @@ Use Cases:
         > OpenCV
         > Numpy
         
+-------------------------------------------------------------------------------
+
 ## 🛠 Setup
 
 Clone this git repo with:
@@ -110,10 +111,13 @@ Clone this git repo with:
 
     > cd project folder
 
+-------------------------------------------------------------------------------
+
 Install dependencies:
 
     > pip install -r requirements.txt 
 
+-------------------------------------------------------------------------------
 
 ## ▶️ Run
 

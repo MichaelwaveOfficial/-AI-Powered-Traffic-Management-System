@@ -20,7 +20,7 @@ class ANPR(object):
             ocr_lang : str = 'en',
             ocr_gpu : bool = True,
             deregistration_time : int = 12,
-            plate_similarity_threshold : int = 85
+            plate_similarity_threshold : int = 70
         ):
         
         '''
@@ -239,7 +239,7 @@ class ANPR(object):
         if not cleansed_plate_text_groups:
             
             # If cleansed plate length complies with set threshold.
-            if len(cleansed_plate_text) == self.UK_MAX_PLATE_LENGTH:
+            if len(cleansed_plate_text) == self.MAX_UK_PLATE_LENGTH:
                 
                 # If groups cannot be discerned from regex. Slice manaually.
                 area_code, reg_year, suffix = cleansed_plate_text[:2], cleansed_plate_text[2:5], cleansed_plate_text[5:]
@@ -275,13 +275,13 @@ class ANPR(object):
         # Generate similarity percentage from corrected and original text.
         plate_similarity_ratio = fuzz.ratio(corrected_plate_text, cleansed_plate_text)
 
-        ##print(
-        ##    'input plate',
-        ##    cleansed_plate_text,
-        ##    'corrected_plate',
-        ##    corrected_plate_text,
-        ##    'at confidence', plate_similarity_ratio
-        ##)
+        print(
+            'input plate',
+            cleansed_plate_text,
+            'corrected_plate',
+            corrected_plate_text,
+            'at confidence', plate_similarity_ratio
+        )
         
         # If similarity float meets set threshold ++ meets validation, return final plate.
         if plate_similarity_ratio >= self.plate_similarity_threshold and \
