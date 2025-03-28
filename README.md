@@ -10,14 +10,14 @@ Since current solutions for traffic management in the UK are either inactive or 
 # 📖 Table of Contents
 
 ---
-1.[Flowcharts](#Flowcharts)
-2.[Benefits](#Benefits)
-3.[UseCases](#UseCases)
-4.[Features](#Features)
-5.[Prerequisites](#Prerequisites)
-6.[Setup](#Setup)
-7.[Configuration](#Configuration)
-8.[RunningTheProject](#Run)
+1. [Flowcharts](#Flowcharts)
+2. [Benefits](#Benefits)
+3. [UseCases](#UseCases)
+4. [Features](#Features)
+5. [Prerequisites](#Prerequisites)
+6. [Setup](#Setup)
+7. [Configuration](#Configuration)
+8. [RunningTheProject](#Run)
 ---
 
 ## Flowcharts
